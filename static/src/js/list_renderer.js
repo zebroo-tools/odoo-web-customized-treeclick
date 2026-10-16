@@ -12,7 +12,8 @@ odoo.define("web_customized_tree_click", function (require) {
 				click: function (ev) {
 					if (record.context.py_onclick) {
 						var $target = $(ev.target);
-						if ($target[0].tagName === "BUTTON") {
+						// buttons and the selection checkbox keep their own behaviour
+						if ($target[0].tagName === "BUTTON" || $target.closest(".o_list_record_selector").length) {
 							return;
 						}
 						ev.preventDefault();
